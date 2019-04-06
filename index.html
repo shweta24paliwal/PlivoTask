@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pricing Calculator</title>
+	<link rel="stylesheet" type="text/css" href="./main.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+</head>
+<body>
+	<div class="main-container">
+		<header>
+			<h2 class="main-heading">Flexible pricing models for your needs</h2>
+			<h5 class="sub-heading">Select your countries on map to begin</h5>
+		</header>
+
+
+		<section>
+			<div class="map-container">
+				<div id="mapdiv" style="width: 600px; height: 350px; overflow: hidden;text-align: left; margin: 0 auto;"></div>
+			</div>
+				
+			<div>
+				
+
+				<div class="services-container top-margin">
+					<h5 class="sub-heading">Choose your sms services for the selected countries to get an estimate</h5>
+					<label class="mid-font services">SMS Services:</label>&nbsp&nbsp
+
+					<label for="option-1" class='small-font common-customCheckbox'>
+						Send Messages
+						<input type="checkbox" class="styled-checkbox" name="services" value="send-msg" id='option-1'>
+						<div class="common-checkboxIndicator"></div>
+					</label>
+
+					<label for="option-2" class='small-font common-customCheckbox'>
+						Receive Messages
+						<input type="checkbox" class="styled-checkbox" name="services" value="receive-msg" id='option-2'>
+						<div class="common-checkboxIndicator"></div>
+					</label>
+
+				<!-- 	<input type="checkbox" class="styled-checkbox" name="services" value="send-msg" id='option-1'>
+					<label for="option-1" class='small-font'> <span></span> Send Messages </label>
+					<input type="checkbox" class="styled-checkbox" name="services" value="receive-msg" id='option-2'>
+					<label for="option-2" class='small-font'> <span></span> Receive Messages </label> -->
+				</div>
+				<div id="selectedCountries" class='selected-countries top-margin'></div>
+
+				<div class="top-margin">
+					<button class="small-font btn-style" onclick="getEstimate()" >GET ESTIMATE</button>
+				</div>
+			</div>
+			
+			<div id='calculator'>
+				<div class="costing-box top-margin">
+					<div id="outBoundCtn">
+						<span class='mid-font'>Send messages at</span></br>
+						<span class="cost" id="outBoundPrice">$0.0050</span></br>
+						<span class="small-font">estimated cost</span>
+					</div>
+					<div id="inBoundCtn">
+						<span class='mid-font'>Recieve messages at</span></br>
+						<span class="cost"  id="inBoundPrice">$0.0025</span></br>
+						<span class="small-font">estimated cost</span>
+					</div>
+				</div>
+				<div class="slider-box top-margin">
+					<input class="range-slider" id='slider' type="range" value="0" min="0" max="3000">
+					<div>
+						<span>1-500</span>
+						<span>500-1000</span>
+						<span>1000-2000</span>
+						<span>2000+</span>
+					</div>
+					
+				</div>
+				
+					<a href="https://www.plivo.com/sms/pricing/" id='pricing-btn' target="_blank">
+						<button class="btn-style top-margin" >View Pricing</button>
+					</a>
+				
+				<button class="btn-style top-margin" onclick="contactForm()" style="display: none;" id='contact-btn'>
+					Contact Sales
+				</button>
+			</div>
+			
+		</section>
+
+		<!-- contact sales form-->
+		<div class="contact-box top-margin" id="contact-form">
+			<form>
+				<div class="row">
+					<div class="col">
+						<label>Full Name</label></br>
+						<input type="text" name="name" placeholder="Jane Doe">
+					</div>
+					<div class="col">
+						<label>Work Email</label></br>
+						<input type="text" name="name" placeholder="Jane.doe@example.com">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<label>Company Name</label></br>
+						<input type="text" name="name" placeholder="Example.Inc">
+					</div>
+					<div class="col">
+						<label>Job Function</label></br>
+						<select>
+							<option>Select an Option</option>
+							<option value="Developer">Developer</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Executives">Executives</option>
+							<option value="Marketing">Marketing</option>
+							<option value="Product Management">Product Management</option>
+							<option value="Sales">Sales</option>
+							<option value="Support">Support</option>
+							<option value="Others">Others</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<label>Phone Number</label>
+						<input type="Number" name="name" placeholder="888-888-8888">
+					</div>
+					<div class="col">
+						<label>Use Case</label>
+						<select>
+							<option>Select an Option</option>
+							<option value="Alerts">Alerts and Notification</option>
+							<option value="Appointment Reminders">Appointment Reminders</option>
+							<option value="Call center">Call center/ontact center</option>
+							<option value="Call Forwading">Call Forwading</option>
+							<option value="Call tracking">Call tracking</option>
+							<option value="CRM">CRM</option>
+							<option value="IVR">IVR</option>
+							
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<label>Description</label></br>
+						<textarea placeholder="Tell us a bit more about your questions or needs"></textarea>
+					</div>
+				</div>
+				<div class="submit-btn">
+					<button class="btn-style" id="contact-form">Contact Sales</button>
+				</div>
+			</form>
+		</div>
+		
+		
+		
+	
+	</div>
+
+	<script type="text/javascript" src="./main.js"></script>
+</body>
+</html>
